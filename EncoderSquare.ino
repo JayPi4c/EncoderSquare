@@ -59,7 +59,7 @@ void moveTileForward() {
   lcd.clear();
   lcd.print("reaching new Tile!");
   resetEncoder();
-  while (encoderLeft < leftMoveGoal && encoderRight < rightMoveGoal) {
+  while (encoderLeft < leftMoveGoal || encoderRight < rightMoveGoal) {
     if (encoderLeft < leftMoveGoal) {
       engineLeftForward();
       digitalWrite(ena, HIGHSPEED);
@@ -89,7 +89,7 @@ void turn(int dir) {
 
   resetEncoder();
   if (dir == RIGHT) {
-    while (encoderLeft < leftTurnGoal && encoderRight < rightTurnGoal) {
+    while (encoderLeft < leftTurnGoal || encoderRight < rightTurnGoal) {
 
       if (encoderLeft < leftTurnGoal) {
         engineLeftForward();
@@ -106,7 +106,7 @@ void turn(int dir) {
       }
     }
   } else if (dir == LEFT) {
-    while (encoderLeft < leftTurnGoal && encoderRight < rightTurnGoal) {
+    while (encoderLeft < leftTurnGoal || encoderRight < rightTurnGoal) {
 
       if (encoderLeft < leftTurnGoal) {
         engineLeftBackward();
